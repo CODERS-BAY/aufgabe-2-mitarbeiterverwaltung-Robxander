@@ -1,32 +1,14 @@
 package application;
-
 import java.util.Scanner;
 
 public class App {
-    private static int generateId() {
-        return (int) (1000 * Math.random());
-    }
 
-    static Scanner scanner = new Scanner(System.in);
-
+    static int size = 2;
+    static Employee[] empArray = new Employee[size];
     static int deptCounter = 0;
     static int empCounter = 0;
+    static Scanner scanner = new Scanner(System.in);
 
-    static void compare(int empCounter, int size, Employee[] empArray){
-        if (empCounter > size -1) {
-            Employee[] copy = empArray;
-            size *= 2;
-            empArray = new Employee[size];
-
-            for ( int i = 0; i < copy.length; i++) {
-                empArray[i] = copy[i];
-            }
-        }
-    }
-static int size =2;
-    static Employee[] empArray = new Employee[size];
-
-    //////////////////////////////////////////////////////////////////////////// MAIN
     public static void main(String[] args) {
 
 //        Department musterDepartment = new Department();
@@ -48,7 +30,7 @@ static int size =2;
 //        System.out.println("Department ist " + department1.isEquals(department3));
 //        System.out.println("Employee ist " + employee1.isEquals(employee2));
 
-      //  int size = 2;
+        //  int size = 2;
 
         System.out.println("Bitte legen Sie eine Abteilung an.");
         System.out.print("Name: ");
@@ -62,20 +44,11 @@ static int size =2;
         deptArray[deptCounter] = new Department(inputDept, generateId(), inputLand, inputCity);
 
         char inputRepeat;
-       // Employee[] empArray = new Employee[size];
+        // Employee[] empArray = new Employee[size];
 
         do {
-
-          //  compare(empCounter, size, empArray);
-            if (empCounter > size -1) {
-                Employee[] copy = empArray;
-                size *= 2;
-                empArray = new Employee[size];
-
-                for ( int i = 0; i < copy.length; i++) {
-                    empArray[i] = copy[i];
-                }
-            }
+            doubleArraySize();
+//
             System.out.println(" Bitte legen Sie einen Mitarbeiter an.");
             System.out.print("Vorname: ");
             String inputFirstName = scanner.nextLine();
@@ -104,18 +77,25 @@ static int size =2;
         System.out.println("Auf Wiedersehen.");
 
     }
+////////////////////////////////////////////////////////////////////////////// METHODEN
 
-    /*
-     * for the bonus task
-     *
-     * private static int generateID() {}
-     *
-     */
 
-    /*
-     * for the console application
-     *
-     * private static void application() {}
-     *
-     */
+    private static int generateId() {
+        return (int) (1000 * Math.random());
+    }
+
+
+    static void doubleArraySize() {
+        if (empCounter > size - 1) {
+            Employee[] copy = empArray;
+            size *= 2;
+            empArray = new Employee[size];
+
+            for (int i = 0; i < copy.length; i++) {
+                empArray[i] = copy[i];
+            }
+        }
+    }
+
+
 }
