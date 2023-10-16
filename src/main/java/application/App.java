@@ -12,6 +12,20 @@ public class App {
     static int deptCounter = 0;
     static int empCounter = 0;
 
+    static void compare(int empCounter, int size, Employee[] empArray){
+        if (empCounter > size -1) {
+            Employee[] copy = empArray;
+            size *= 2;
+            empArray = new Employee[size];
+
+            for ( int i = 0; i < copy.length; i++) {
+                empArray[i] = copy[i];
+            }
+        }
+    }
+static int size =2;
+    static Employee[] empArray = new Employee[size];
+
     //////////////////////////////////////////////////////////////////////////// MAIN
     public static void main(String[] args) {
 
@@ -34,7 +48,7 @@ public class App {
 //        System.out.println("Department ist " + department1.isEquals(department3));
 //        System.out.println("Employee ist " + employee1.isEquals(employee2));
 
-        int size = 2;
+      //  int size = 2;
 
         System.out.println("Bitte legen Sie eine Abteilung an.");
         System.out.print("Name: ");
@@ -48,10 +62,12 @@ public class App {
         deptArray[deptCounter] = new Department(inputDept, generateId(), inputLand, inputCity);
 
         char inputRepeat;
-        Employee[] empArray = new Employee[size];
+       // Employee[] empArray = new Employee[size];
 
         do {
-            if (empCounter == size) {
+
+          //  compare(empCounter, size, empArray);
+            if (empCounter > size -1) {
                 Employee[] copy = empArray;
                 size *= 2;
                 empArray = new Employee[size];
@@ -59,7 +75,6 @@ public class App {
                 for ( int i = 0; i < copy.length; i++) {
                     empArray[i] = copy[i];
                 }
-
             }
             System.out.println(" Bitte legen Sie einen Mitarbeiter an.");
             System.out.print("Vorname: ");
