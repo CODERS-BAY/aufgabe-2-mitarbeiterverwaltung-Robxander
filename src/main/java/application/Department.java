@@ -13,9 +13,6 @@ public class Department {
         this.city = city;
     }
 
-
-
-
     public Department() {
         name = "Test";
         id = 123;
